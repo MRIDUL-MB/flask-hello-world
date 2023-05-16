@@ -2,14 +2,14 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-html_content = ""
+data = ""
 
 
 @app.route('/api/get', methods=['GET'])
 def get_data():
-    global html_content
+
     response = jsonify(
-        {'message': 'Date sent successfully', 'data': html_content})
+        {'message': 'Date sent successfully', 'data': data})
 
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response, 200
@@ -26,6 +26,7 @@ def send_email():
     html_content = data.get(
         'html_content'
     )
+    data = html_content
 
     print(html_content)
 
