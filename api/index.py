@@ -6,9 +6,10 @@ html_content = ""
 
 
 @app.route('/api/get', methods=['GET'])
-def get_date():
+def get_data():
     global html_content
     response = {'message': 'Date sent successfully', 'data': html_content}
+    response.headers.add('Access-Control-Allow-Origin', '*')
     return jsonify(response), 200
 
 
